@@ -170,3 +170,6 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 
 fs.writeFileSync("index.html", html);
 console.log(`✅ index.html generated with search + preset size + copy features for ${files.length} files`);
+
+
+
