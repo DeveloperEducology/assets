@@ -5,9 +5,9 @@ const repoName = "assets";
 const branch = "main";
 
 // Get all SVG/PNG/JPG files
-const files = fs.readdirSync(".").filter(f =>
-  f.match(/\.(svg|png|jpg|jpeg|gif)$/i)
-);
+const files = fs
+  .readdirSync(".")
+  .filter((f) => f.match(/\.(svg|png|jpg|jpeg|gif)$/i));
 
 function emojiForFile(file) {
   const name = file.toLowerCase();
@@ -152,7 +152,7 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 
     let snippet = "";
     if (selectedSize) {
-      snippet = \`<img src="\${baseLink}" width="\${selectedSize}" height="\${selectedSize}"></img>\`;
+      snippet = \`<img src="\${baseLink}" width="\${selectedSize}"></img>\`;
     } else {
       snippet = baseLink; // original
     }
@@ -169,7 +169,9 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 </html>`;
 
 fs.writeFileSync("index.html", html);
-console.log(`✅ index.html generated with search + preset size + copy features for ${files.length} files`);
+console.log(
+  `✅ index.html generated with search + preset size + copy features for ${files.length} files`
+);
 
 
 
