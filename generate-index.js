@@ -1,5 +1,4 @@
 const fs = require("fs");
-const path = require("path");
 
 const repoOwner = "DeveloperEducology";
 const repoName = "assets";
@@ -22,7 +21,7 @@ function emojiForFile(file) {
 }
 
 function generateCard(file) {
-  const cdnLink = `https://cdn.jsdelivr.net/gh/${repoOwner}/${repoName}@${branch}/${file}`;
+  const cdnLink = `https://cdn.jsdelivr.net/gh/${repoOwner}/${repoName}@main/${file}`;
   return `
     <div class="card" data-name="${file.toLowerCase()}">
       <img src="${file}" alt="${file}">
@@ -30,7 +29,14 @@ function generateCard(file) {
       <div class="links">
         <a href="${file}" target="_blank">GitHub Pages Link</a>
         <a href="${cdnLink}" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="${cdnLink}">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="${cdnLink}">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="${cdnLink}">📋 Copy</button>
       </div>
     </div>`;
 }
@@ -66,7 +72,7 @@ const html = `<!DOCTYPE html>
     }
     .asset-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
@@ -94,7 +100,6 @@ const html = `<!DOCTYPE html>
       text-decoration: none;
       margin-bottom: 5px;
     }
-    .links a:hover { text-decoration: underline; }
     .copy-btn {
       background: #007bff;
       color: #fff;
@@ -102,16 +107,22 @@ const html = `<!DOCTYPE html>
       padding: 6px 10px;
       border-radius: 5px;
       cursor: pointer;
+      margin-top: 5px;
     }
     .copy-btn:hover {
       background: #0056b3;
+    }
+    .size-select {
+      margin-top: 5px;
+      padding: 5px;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
 
 <h1>📦 ${repoOwner}/${repoName} CDN</h1>
-<p style="text-align:center;">Search, view, and copy CDN links</p>
+<p style="text-align:center;">Search, view & copy CDN links with preset sizes</p>
 
 <div class="search-box">
   <input type="text" id="searchInput" placeholder="🔍 Search files...">
@@ -131,13 +142,24 @@ document.getElementById('searchInput').addEventListener('input', function() {
   });
 });
 
-// 📋 Copy CDN Link
+// 📋 Copy CDN Link with selected size
 document.querySelectorAll('.copy-btn').forEach(btn => {
   btn.addEventListener('click', function() {
-    const link = this.dataset.link;
-    navigator.clipboard.writeText(link).then(() => {
+    const baseLink = this.dataset.link;
+    const parent = this.closest(".links");
+    const sizeSelect = parent.querySelector(".size-select");
+    const selectedSize = sizeSelect.value;
+
+    let snippet = "";
+    if (selectedSize) {
+      snippet = \`<img src="\${baseLink}" width="\${selectedSize}">\`;
+    } else {
+      snippet = baseLink; // original
+    }
+
+    navigator.clipboard.writeText(snippet).then(() => {
       this.textContent = "✅ Copied!";
-      setTimeout(() => { this.textContent = "📋 Copy CDN Link"; }, 1500);
+      setTimeout(() => { this.textContent = "📋 Copy"; }, 1500);
     });
   });
 });
@@ -147,4 +169,4 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 </html>`;
 
 fs.writeFileSync("index.html", html);
-console.log(`✅ index.html generated with search & copy features for ${files.length} files`);
+console.log(`✅ index.html generated with search + preset size + copy features for ${files.length} files`);

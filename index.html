@@ -27,7 +27,7 @@
     }
     .asset-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
       margin-top: 20px;
     }
@@ -55,7 +55,6 @@
       text-decoration: none;
       margin-bottom: 5px;
     }
-    .links a:hover { text-decoration: underline; }
     .copy-btn {
       background: #007bff;
       color: #fff;
@@ -63,16 +62,22 @@
       padding: 6px 10px;
       border-radius: 5px;
       cursor: pointer;
+      margin-top: 5px;
     }
     .copy-btn:hover {
       background: #0056b3;
+    }
+    .size-select {
+      margin-top: 5px;
+      padding: 5px;
+      font-size: 12px;
     }
   </style>
 </head>
 <body>
 
 <h1>📦 DeveloperEducology/assets CDN</h1>
-<p style="text-align:center;">Search, view, and copy CDN links</p>
+<p style="text-align:center;">Search, view & copy CDN links with preset sizes</p>
 
 <div class="search-box">
   <input type="text" id="searchInput" placeholder="🔍 Search files...">
@@ -80,23 +85,20 @@
 
 <div class="asset-grid" id="assetGrid">
 
-    <div class="card" data-name="img-20250716-wa0550.jpg">
-      <img src="IMG-20250716-WA0550.jpg" alt="IMG-20250716-WA0550.jpg">
-      <div>📄 IMG-20250716-WA0550.jpg</div>
-      <div class="links">
-        <a href="IMG-20250716-WA0550.jpg" target="_blank">GitHub Pages Link</a>
-        <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/IMG-20250716-WA0550.jpg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/IMG-20250716-WA0550.jpg">📋 Copy CDN Link</button>
-      </div>
-    </div>
-
     <div class="card" data-name="apple.svg">
       <img src="apple.svg" alt="apple.svg">
       <div>🍎 apple.svg</div>
       <div class="links">
         <a href="apple.svg" target="_blank">GitHub Pages Link</a>
         <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/apple.svg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/apple.svg">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/apple.svg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/apple.svg">📋 Copy</button>
       </div>
     </div>
 
@@ -106,7 +108,14 @@
       <div class="links">
         <a href="applereal.svg" target="_blank">GitHub Pages Link</a>
         <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/applereal.svg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/applereal.svg">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/applereal.svg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/applereal.svg">📋 Copy</button>
       </div>
     </div>
 
@@ -116,7 +125,14 @@
       <div class="links">
         <a href="banana.svg" target="_blank">GitHub Pages Link</a>
         <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/banana.svg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/banana.svg">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/banana.svg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/banana.svg">📋 Copy</button>
       </div>
     </div>
 
@@ -126,7 +142,14 @@
       <div class="links">
         <a href="bumpyroad.svg" target="_blank">GitHub Pages Link</a>
         <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/bumpyroad.svg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/bumpyroad.svg">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/bumpyroad.svg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/bumpyroad.svg">📋 Copy</button>
       </div>
     </div>
 
@@ -136,7 +159,14 @@
       <div class="links">
         <a href="cake.svg" target="_blank">GitHub Pages Link</a>
         <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/cake.svg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/cake.svg">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/cake.svg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/cake.svg">📋 Copy</button>
       </div>
     </div>
 
@@ -146,7 +176,31 @@
       <div class="links">
         <a href="cleanroad.svg" target="_blank">GitHub Pages Link</a>
         <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/cleanroad.svg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/cleanroad.svg">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/cleanroad.svg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/cleanroad.svg">📋 Copy</button>
+      </div>
+    </div>
+
+    <div class="card" data-name="girlplaying.jpg">
+      <img src="girlplaying.jpg" alt="girlplaying.jpg">
+      <div>📄 girlplaying.jpg</div>
+      <div class="links">
+        <a href="girlplaying.jpg" target="_blank">GitHub Pages Link</a>
+        <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/girlplaying.jpg" target="_blank">jsDelivr CDN</a>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/girlplaying.jpg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/girlplaying.jpg">📋 Copy</button>
       </div>
     </div>
 
@@ -156,7 +210,14 @@
       <div class="links">
         <a href="orange.svg" target="_blank">GitHub Pages Link</a>
         <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/orange.svg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/orange.svg">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/orange.svg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/orange.svg">📋 Copy</button>
       </div>
     </div>
 
@@ -166,7 +227,14 @@
       <div class="links">
         <a href="watermelon.svg" target="_blank">GitHub Pages Link</a>
         <a href="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/watermelon.svg" target="_blank">jsDelivr CDN</a>
-        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/watermelon.svg">📋 Copy CDN Link</button>
+        <select class="size-select" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/watermelon.svg">
+          <option value="">Original</option>
+          <option value="50">50px</option>
+          <option value="100">100px</option>
+          <option value="200">200px</option>
+          <option value="400">400px</option>
+        </select>
+        <button class="copy-btn" data-link="https://cdn.jsdelivr.net/gh/DeveloperEducology/assets@main/watermelon.svg">📋 Copy</button>
       </div>
     </div>
 </div>
@@ -181,13 +249,24 @@ document.getElementById('searchInput').addEventListener('input', function() {
   });
 });
 
-// 📋 Copy CDN Link
+// 📋 Copy CDN Link with selected size
 document.querySelectorAll('.copy-btn').forEach(btn => {
   btn.addEventListener('click', function() {
-    const link = this.dataset.link;
-    navigator.clipboard.writeText(link).then(() => {
+    const baseLink = this.dataset.link;
+    const parent = this.closest(".links");
+    const sizeSelect = parent.querySelector(".size-select");
+    const selectedSize = sizeSelect.value;
+
+    let snippet = "";
+    if (selectedSize) {
+      snippet = `<img src="${baseLink}" width="${selectedSize}">`;
+    } else {
+      snippet = baseLink; // original
+    }
+
+    navigator.clipboard.writeText(snippet).then(() => {
       this.textContent = "✅ Copied!";
-      setTimeout(() => { this.textContent = "📋 Copy CDN Link"; }, 1500);
+      setTimeout(() => { this.textContent = "📋 Copy"; }, 1500);
     });
   });
 });
