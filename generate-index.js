@@ -152,7 +152,7 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 
     let snippet = "";
     if (selectedSize) {
-      snippet = \`<img src="\${baseLink}" width="\${selectedSize}">\`;
+      snippet = \`<img src="\${baseLink}" width="\${selectedSize}" height="\${selectedSize}"></img>\`;
     } else {
       snippet = baseLink; // original
     }
