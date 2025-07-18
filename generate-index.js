@@ -36,7 +36,7 @@ function generateCard(file) {
           <option value="200">200px</option>
           <option value="400">400px</option>
         </select>
-        <button class="copy-btn" data-link="${cdnLink}">📋 Copy</button>
+        <button class="copy-btn" data-link="${cdnLink}">📋 Copy IMG</button>
       </div>
     </div>`;
 }
@@ -122,7 +122,7 @@ const html = `<!DOCTYPE html>
 <body>
 
 <h1>📦 ${repoOwner}/${repoName} CDN</h1>
-<p style="text-align:center;">Search, view & copy CDN links with preset sizes</p>
+<p style="text-align:center;">Search, view & copy HTML <img> tags easily</p>
 
 <div class="search-box">
   <input type="text" id="searchInput" placeholder="🔍 Search files...">
@@ -142,24 +142,26 @@ document.getElementById('searchInput').addEventListener('input', function() {
   });
 });
 
-// 📋 Copy CDN Link with selected size
+// 📋 Copy <img> tag snippet with width/height
 document.querySelectorAll('.copy-btn').forEach(btn => {
   btn.addEventListener('click', function() {
     const baseLink = this.dataset.link;
     const parent = this.closest(".links");
     const sizeSelect = parent.querySelector(".size-select");
-    const selectedSize = sizeSelect.value;
+    const selectedSize = sizeSelect.value || "";
 
-    let snippet = "";
+    // ✅ width & height attributes
+    let sizeAttr = "";
     if (selectedSize) {
-      snippet = \`<img src="\${baseLink}" width="\${selectedSize}"></img>\`;
-    } else {
-      snippet = baseLink; // original
+      sizeAttr = \` width="\${selectedSize}" height="\${selectedSize}"\`;
     }
 
-    navigator.clipboard.writeText(snippet).then(() => {
+    // ✅ Final <img> tag with closing </img>
+    let imgTag = \`<img src="\${baseLink}"\${sizeAttr}></img>\`;
+
+    navigator.clipboard.writeText(imgTag).then(() => {
       this.textContent = "✅ Copied!";
-      setTimeout(() => { this.textContent = "📋 Copy"; }, 1500);
+      setTimeout(() => { this.textContent = "📋 Copy IMG"; }, 1500);
     });
   });
 });
@@ -170,8 +172,12 @@ document.querySelectorAll('.copy-btn').forEach(btn => {
 
 fs.writeFileSync("index.html", html);
 console.log(
-  `✅ index.html generated with search + preset size + copy features for ${files.length} files`
+//   \`✅ index.html generated with search + preset size + proper <img> tag copy for \${files.length} files\`
 );
+
+
+
+
 
 
 
